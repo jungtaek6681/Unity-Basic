@@ -5,10 +5,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+	[Header("Spec")]
 	[SerializeField]
 	private float moveSpeed;
 	[SerializeField]
 	private float rotateSpeed;
+
+	[Header("Shooter")]
+	[SerializeField]
+	private Transform shootTransform;
+	[SerializeField]
+	private Bullet bulletPrefab;
 
 	private Vector3 inputDir;
 
@@ -33,5 +40,10 @@ public class PlayerController : MonoBehaviour
 		inputDir.x = value.Get<Vector2>().x;
 		inputDir.z = value.Get<Vector2>().y;
 		Debug.Log(inputDir);
+	}
+
+	private void OnFire(InputValue value)
+	{
+		Instantiate(bulletPrefab, shootTransform.position, shootTransform.rotation);
 	}
 }
