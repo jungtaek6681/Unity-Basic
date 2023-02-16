@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
 	private void UpdateMove()
 	{
-		transform.position += moveDir * moveSpeed;
+		transform.position += moveDir * moveSpeed * Time.deltaTime;
 	}
 
 	private void OnMove(InputValue value)
