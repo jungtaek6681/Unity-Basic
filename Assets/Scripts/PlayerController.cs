@@ -7,9 +7,13 @@ public class PlayerController : MonoBehaviour
 {
 	[Header("Spec")]
 	[SerializeField]
-	private float moveSpeed;
+	private float movePower;
 	[SerializeField]
-	private float rotateSpeed;
+	private float maxMove;
+	[SerializeField]
+	private float rotatePower;
+	[SerializeField]
+	private float maxRotate;
 
 	[Header("Shooter")]
 	[SerializeField]
@@ -17,7 +21,13 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	private Bullet bulletPrefab;
 
+	private new Rigidbody rigidbody;
 	private Vector3 inputDir;
+
+	private void Awake()
+	{
+		rigidbody = GetComponent<Rigidbody>();
+	}
 
 	private void Update()
 	{
@@ -27,12 +37,18 @@ public class PlayerController : MonoBehaviour
 
 	private void UpdateMove()
 	{
-		transform.Translate(Vector3.forward * inputDir.z * moveSpeed * Time.deltaTime, Space.Self);
+		rigidbody.AddForce(transform.forward * inputDir.z * movePower);
+
+		if (rigidbody.velocity.magnitude > maxMove)
+			rigidbody.velocity = rigidbody.velocity.normalized * maxMove;
 	}
 
 	private void UpdateRotate()
 	{
-		transform.Rotate(Vector3.up, inputDir.x * rotateSpeed * Time.deltaTime, Space.World);
+		rigidbody.AddTorque(Vector3.up * inputDir.x * rotatePower);
+
+		if (rigidbody.angularVelocity.magnitude > maxRotate)
+			rigidbody.angularVelocity = rigidbody.angularVelocity.normalized * maxRotate;
 	}
 
 	private void OnMove(InputValue value)

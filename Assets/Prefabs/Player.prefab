@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1108200113}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3274520298767731813}
   - component: {fileID: 194689920786599006}
   - component: {fileID: 4031873090257935817}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TankTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 5713410103421450926}
   - component: {fileID: 131935051649602167}
   - component: {fileID: 7010770069162119670}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TankTracksRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 2882257748304432203}
   - component: {fileID: 7042499791584958201}
   - component: {fileID: 3546781780781420164}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TankChassis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 3599567490566908635}
   - component: {fileID: 3284961111206975790}
   - component: {fileID: 8560971447913384988}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TankTracksLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5844199934790505983}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TankRenderers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,7 +412,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7856147698314943488}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7856147697653480930}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +479,8 @@ GameObject:
   - component: {fileID: 7856147698346237939}
   - component: {fileID: 7856147698346237951}
   - component: {fileID: 7856147698346237944}
-  m_Layer: 0
+  - component: {fileID: 2290056734453781469}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,8 +529,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6364e137af1fde74d9e307afd312b556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  rotateSpeed: 90
+  movePower: 5
+  maxMove: 3
+  rotatePower: 5
+  maxRotate: 2
   shootTransform: {fileID: 1108200113}
   bulletPrefab: {fileID: 5173610914345899347, guid: ff24c31d1d58c7045a8777174e1fbb62, type: 3}
 --- !u!114 &7856147698346237944
@@ -626,3 +629,19 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!54 &2290056734453781469
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7856147698346237937}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
