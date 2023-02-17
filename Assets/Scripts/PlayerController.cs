@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
 	private float maxRotate;
 
 	[Header("Shooter")]
+	[SerializeField]
+	private CinemachineVirtualCamera focuseCam;
 	[SerializeField]
 	private Transform shootTransform;
 	[SerializeField]
@@ -61,5 +64,19 @@ public class PlayerController : MonoBehaviour
 	private void OnFire(InputValue value)
 	{
 		Instantiate(bulletPrefab, shootTransform.position, shootTransform.rotation);
+	}
+
+	private void OnFocus(InputValue value)
+	{
+		if (value.isPressed)
+		{
+			Debug.Log("OnFocused");
+			focuseCam.Priority = 999;
+		}
+		else
+		{
+			Debug.Log("OnUnFocused");
+			focuseCam.Priority = 0;
+		}
 	}
 }
