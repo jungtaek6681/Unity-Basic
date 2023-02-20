@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	private float maxRotate;
 
+	[SerializeField]
+	private AudioClip idleClip;
+	[SerializeField]
+	private AudioClip driveClip;
+
 	[Header("Shooter")]
 	[SerializeField]
 	private CinemachineVirtualCamera focuseCam;
@@ -23,19 +28,24 @@ public class PlayerController : MonoBehaviour
 	private Transform shootTransform;
 	[SerializeField]
 	private Bullet bulletPrefab;
+	[SerializeField]
+	private AudioSource shootSound;
 
 	private new Rigidbody rigidbody;
 	private Vector3 inputDir;
+	private AudioSource audioSource;
 
 	private void Awake()
 	{
 		rigidbody = GetComponent<Rigidbody>();
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	private void Update()
 	{
 		UpdateMove();
 		UpdateRotate();
+		UpdateSound();
 	}
 
 	private void UpdateMove()
@@ -54,6 +64,22 @@ public class PlayerController : MonoBehaviour
 			rigidbody.angularVelocity = rigidbody.angularVelocity.normalized * maxRotate;
 	}
 
+	private void UpdateSound()
+	{
+		if (inputDir.sqrMagnitude > 0.1f * 0.1f && audioSource.clip != driveClip)
+		{
+			audioSource.Stop();
+			audioSource.clip = driveClip;
+			audioSource.Play();
+		}
+		else if (inputDir.sqrMagnitude <= 0.1f * 0.1f && audioSource.clip != idleClip)
+		{
+			audioSource.Stop();
+			audioSource.clip = idleClip;
+			audioSource.Play();
+		}
+	}
+
 	private void OnMove(InputValue value)
 	{
 		inputDir.x = value.Get<Vector2>().x;
@@ -64,6 +90,7 @@ public class PlayerController : MonoBehaviour
 	private void OnFire(InputValue value)
 	{
 		Instantiate(bulletPrefab, shootTransform.position, shootTransform.rotation);
+		shootSound.Play();
 	}
 
 	private void OnFocus(InputValue value)
