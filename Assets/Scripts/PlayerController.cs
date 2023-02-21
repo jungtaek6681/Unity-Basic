@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -34,11 +35,13 @@ public class PlayerController : MonoBehaviour
 	private new Rigidbody rigidbody;
 	private Vector3 inputDir;
 	private AudioSource audioSource;
+	private Animator animator;
 
 	private void Awake()
 	{
 		rigidbody = GetComponent<Rigidbody>();
 		audioSource = GetComponent<AudioSource>();
+		animator = GetComponent<Animator>();
 	}
 
 	private void Update()
@@ -46,6 +49,7 @@ public class PlayerController : MonoBehaviour
 		UpdateMove();
 		UpdateRotate();
 		UpdateSound();
+		UpdateAnimator();
 	}
 
 	private void UpdateMove()
@@ -80,6 +84,11 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	private void UpdateAnimator()
+	{
+		animator.SetFloat("Accel", inputDir.sqrMagnitude);
+	}
+
 	private void OnMove(InputValue value)
 	{
 		inputDir.x = value.Get<Vector2>().x;
@@ -91,6 +100,7 @@ public class PlayerController : MonoBehaviour
 	{
 		Instantiate(bulletPrefab, shootTransform.position, shootTransform.rotation);
 		shootSound.Play();
+		animator.SetTrigger("Shoot");
 	}
 
 	private void OnFocus(InputValue value)
