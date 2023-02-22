@@ -121,5 +121,8 @@ public class PlayerController : MonoBehaviour
 		Instantiate(bulletPrefab, shootTransform.position, shootTransform.rotation);
 		shootSound.Play();
 		animator.SetTrigger("Shoot");
+
+		// 싱글톤을 이용한 전역접근
+		GameManager.Data.AddShootCount(1);
 	}
 }
