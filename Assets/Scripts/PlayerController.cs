@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -98,9 +99,7 @@ public class PlayerController : MonoBehaviour
 
 	private void OnFire(InputValue value)
 	{
-		Instantiate(bulletPrefab, shootTransform.position, shootTransform.rotation);
-		shootSound.Play();
-		animator.SetTrigger("Shoot");
+		Shoot();
 	}
 
 	private void OnFocus(InputValue value)
@@ -115,5 +114,12 @@ public class PlayerController : MonoBehaviour
 			Debug.Log("OnUnFocused");
 			focuseCam.Priority = 0;
 		}
+	}
+
+	public void Shoot()
+	{
+		Instantiate(bulletPrefab, shootTransform.position, shootTransform.rotation);
+		shootSound.Play();
+		animator.SetTrigger("Shoot");
 	}
 }
