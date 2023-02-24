@@ -8,12 +8,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-	[SerializeField]
-	private Mover mover;
-	[SerializeField]
-	private Shooter shooter;
-	[SerializeField]
-	private AudioPlayer audioPlayer;
+	public UnityEvent<Vector3> OnMoved;
+	public UnityEvent OnShooted;
+	public UnityEvent<bool> OnFocused;
 
 	private Animator animator;
 
@@ -28,20 +25,18 @@ public class PlayerController : MonoBehaviour
 		inputDir.x = value.Get<Vector2>().x;
 		inputDir.z = value.Get<Vector2>().y;
 
-		mover.Move(inputDir);
-		audioPlayer.PlayMove(inputDir);
+		OnMoved?.Invoke(inputDir);
 		animator.SetFloat("Accel", inputDir.sqrMagnitude);
 	}
 
 	private void OnFire(InputValue value)
 	{
-		shooter.Shoot();
-		audioPlayer.PlayShoot();
+		OnShooted?.Invoke();
 		animator.SetTrigger("Shoot");
 	}
 
 	private void OnFocus(InputValue value)
 	{
-		shooter.Focus(value.isPressed);
+		OnFocused?.Invoke(value.isPressed);
 	}
 }
