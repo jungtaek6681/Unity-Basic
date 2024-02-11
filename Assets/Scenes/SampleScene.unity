@@ -13868,7 +13868,7 @@ GameObject:
   - component: {fileID: 2095626406}
   - component: {fileID: 2095626410}
   m_Layer: 0
-  m_Name: Frame
+  m_Name: Coroutine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13969,11 +13969,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2095626405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d79b6f1fb6ea4478b3e7b14b841eb3, type: 3}
+  m_Script: {fileID: 11500000, guid: 758f8d5cd182606418ed73f4226c4bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frame: 0
-  time: 0
 --- !u!1 &2132167624
 GameObject:
   m_ObjectHideFlags: 0
