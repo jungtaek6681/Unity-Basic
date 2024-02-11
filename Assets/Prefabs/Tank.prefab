@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1866095230266412398}
   - component: {fileID: 464892332368812933}
   - component: {fileID: 5578068174804864077}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TankChassis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1116331624143604637}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MuzzlePoint
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 6752965722817220016}
   - component: {fileID: 6865792748157574636}
   - component: {fileID: 6370037697921497208}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TankTracksRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 1495519412681210595}
   - component: {fileID: 3832961099599107826}
   - component: {fileID: 8508922130847688923}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TankTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8116387891509987387}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TankRenderers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,10 @@ GameObject:
   - component: {fileID: 3413235193667993169}
   - component: {fileID: 1586273952373879807}
   - component: {fileID: 6747823235086868112}
-  m_Layer: 0
+  - component: {fileID: 2873923637568190462}
+  - component: {fileID: 9189657938703699000}
+  - component: {fileID: 7299997144994144681}
+  m_Layer: 3
   m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,11 +399,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d598ddfa4c5e3234d9666c91ac665fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidbody: {fileID: 2873923637568190462}
   bulletPrefab: {fileID: 9055145346599643155, guid: 69f76d3b6af3cbf4386315484140a02f, type: 3}
   muzzlePoint: {fileID: 1116331624143604637}
   bulletSpeed: 20
-  moveSpeed: 3
+  movePower: 20
+  maxSpeed: 5
   rotateSpeed: 90
+--- !u!54 &2873923637568190462
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323804376457988735}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &9189657938703699000
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323804376457988735}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6, y: 1, z: 2}
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!135 &7299997144994144681
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323804376457988735}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.7
+  m_Center: {x: 0, y: 1.1, z: -0.1}
 --- !u!1 &7442191326339006346
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +486,7 @@ GameObject:
   - component: {fileID: 3726839450026611493}
   - component: {fileID: 2984866066345686231}
   - component: {fileID: 165467171569288787}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TankTracksLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}

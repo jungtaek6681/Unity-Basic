@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4074369671197058191}
   - component: {fileID: 9055145346599643155}
   - component: {fileID: 2935455734406594012}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 4074369671197058191}
+  explosionEffect: {fileID: 195792, guid: c4871acd0d8f53a46a9bb4bcdec37762, type: 3}
   speed: 20
 --- !u!136 &2935455734406594012
 CapsuleCollider:

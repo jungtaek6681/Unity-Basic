@@ -3,24 +3,33 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] new Rigidbody rigidbody;
     [SerializeField] Bullet bulletPrefab;
     [SerializeField] Transform muzzlePoint;
     [SerializeField] float bulletSpeed;
 
-    [SerializeField] float moveSpeed;
+    [SerializeField] float movePower;
+    [SerializeField] float maxSpeed;
     [SerializeField] float rotateSpeed;
 
     private Vector3 moveDir;
 
     private void Update()
     {
-        Move();
         Rotate();
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
     }
 
     private void Move()
     {
-        transform.Translate(Vector3.forward * moveDir.z * moveSpeed * Time.deltaTime, Space.Self);
+        if (rigidbody.velocity.sqrMagnitude < maxSpeed * maxSpeed)
+        {
+            rigidbody.AddForce(transform.forward * moveDir.z * movePower);
+        }
     }
 
     private void Rotate()
