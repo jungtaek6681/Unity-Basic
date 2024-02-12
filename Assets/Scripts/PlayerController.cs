@@ -1,5 +1,6 @@
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -14,6 +15,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float rotateSpeed;
 
     [SerializeField] CinemachineVirtualCamera focusCamera;
+
+    [SerializeField] AudioSource idleSource;
+    [SerializeField] AudioSource driveSource;
+    [SerializeField] AudioSource fireSource;
 
     private Vector3 moveDir;
 
@@ -44,6 +49,7 @@ public class PlayerController : MonoBehaviour
     {
         Bullet bullet = Instantiate(bulletPrefab, muzzlePoint.position, muzzlePoint.rotation);
         bullet.speed = bulletSpeed;
+        fireSource.Play();
     }
 
     private void OnMove(InputValue value)
@@ -51,6 +57,17 @@ public class PlayerController : MonoBehaviour
         Vector2 input = value.Get<Vector2>();
         moveDir.x = input.x;
         moveDir.z = input.y;
+
+        if (input.sqrMagnitude > 0)
+        {
+            idleSource.Stop();
+            driveSource.Play();
+        }
+        else
+        {
+            idleSource.Play();
+            driveSource.Stop();
+        }
     }
 
     private void OnFire(InputValue value)
