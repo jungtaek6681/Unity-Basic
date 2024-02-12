@@ -351,7 +351,7 @@ Transform:
   m_GameObject: {fileID: 6279592785709970935}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -378,6 +378,7 @@ GameObject:
   - component: {fileID: 1682795815823073681}
   - component: {fileID: 3624493165298280899}
   - component: {fileID: 6637938972967794984}
+  - component: {fileID: 1455159288019861866}
   m_Layer: 3
   m_Name: Tank
   m_TagString: Untagged
@@ -454,6 +455,7 @@ MonoBehaviour:
   idleSource: {fileID: 1682795815823073681}
   driveSource: {fileID: 3624493165298280899}
   fireSource: {fileID: 6637938972967794984}
+  animator: {fileID: 1455159288019861866}
 --- !u!54 &2873923637568190462
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -811,6 +813,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1455159288019861866
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323804376457988735}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c6cfcf375214ae34da631642cc8cb30b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7364979682322320918
 GameObject:
   m_ObjectHideFlags: 0

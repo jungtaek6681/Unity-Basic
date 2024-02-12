@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioSource driveSource;
     [SerializeField] AudioSource fireSource;
 
+    [SerializeField] Animator animator;
+
     private Vector3 moveDir;
 
     private void Update()
@@ -50,6 +52,7 @@ public class PlayerController : MonoBehaviour
         Bullet bullet = Instantiate(bulletPrefab, muzzlePoint.position, muzzlePoint.rotation);
         bullet.speed = bulletSpeed;
         fireSource.Play();
+        animator.SetTrigger("Fire");
     }
 
     private void OnMove(InputValue value)
