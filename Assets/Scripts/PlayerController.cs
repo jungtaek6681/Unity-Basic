@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(Vector3.up, moveDir.x * rotateSpeed * Time.deltaTime, Space.World);
     }
 
-    private void Fire()
+    public void Fire()
     {
         Bullet bullet = Instantiate(bulletPrefab, muzzlePoint.position, muzzlePoint.rotation);
         bullet.speed = bulletSpeed;
