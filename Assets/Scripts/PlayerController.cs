@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float movePower;
     [SerializeField] float maxSpeed;
     [SerializeField] float rotateSpeed;
+
+    [SerializeField] CinemachineVirtualCamera focusCamera;
 
     private Vector3 moveDir;
 
@@ -56,5 +59,10 @@ public class PlayerController : MonoBehaviour
         {
             Fire();
         }
+    }
+
+    private void OnFocus(InputValue value)
+    {
+        focusCamera.Priority = value.isPressed ? 20 : 5;
     }
 }
