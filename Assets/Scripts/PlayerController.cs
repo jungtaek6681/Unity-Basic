@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
         bullet.speed = bulletSpeed;
         fireSource.Play();
         animator.SetTrigger("Fire");
+        Manager.Data.totalFireCount++;
     }
 
     private void OnMove(InputValue value)
