@@ -1,8 +1,23 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DataManager : MonoBehaviour
 {
-    public int totalFireCount;
+    [SerializeField] int totalFireCount;
+    public int TotalFireCount
+    {
+        set
+        {
+            totalFireCount = value;
+            OnTotalFireCountChanged?.Invoke(value);
+        }
+        get
+        {
+            return totalFireCount;
+        }
+    }
+
+    public UnityAction<int> OnTotalFireCountChanged;
 
     public void Init()
     {

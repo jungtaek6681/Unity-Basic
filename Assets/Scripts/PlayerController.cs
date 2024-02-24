@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public void Fire()
     {
         OnFiring?.Invoke();
-        Manager.Data.totalFireCount++;
+        Manager.Data.TotalFireCount++;
         OnFired?.Invoke();
     }
 
