@@ -1,21 +1,24 @@
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] Mover mover;
-    [SerializeField] Shooter shooter;
     [SerializeField] AudioPlayer audioPlayer;
     [SerializeField] CinemachineVirtualCamera focusCamera;
 
+    [Header("Event")]
+    public UnityEvent OnFiring;
+    public UnityEvent OnFired;
+
     public void Fire()
     {
-        shooter.Fire();
-        audioPlayer.PlayFire();
-        animator.SetTrigger("Fire");
+        OnFiring?.Invoke();
         Manager.Data.totalFireCount++;
+        OnFired?.Invoke();
     }
 
     private void OnMove(InputValue value)

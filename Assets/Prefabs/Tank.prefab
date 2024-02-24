@@ -489,9 +489,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1455159288019861866}
   mover: {fileID: 423682329338471908}
-  shooter: {fileID: 4420152283486111703}
   audioPlayer: {fileID: 4249698582976815014}
   focusCamera: {fileID: 6694972627347402369}
+  OnFiring:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4420152283486111703}
+        m_TargetAssemblyTypeName: Shooter, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4249698582976815014}
+        m_TargetAssemblyTypeName: AudioPlayer, Assembly-CSharp
+        m_MethodName: PlayFire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFired:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1455159288019861866}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Fire
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &423682329338471908
 MonoBehaviour:
   m_ObjectHideFlags: 0
